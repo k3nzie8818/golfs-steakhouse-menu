@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Golf's Steak House &amp; Seafood</title>
-  
+    <title>Golf's Steak House Menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
         body {
-            margin: 0px;
+            margin: 0;
             font-family: 'Nunito', sans-serif;
             color: #333;
-            font-size: 22px; 
             line-height: 1.6;
         }
 
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+        }
+
+        /* Primary Header */
         header {
             background-color: #fff;
             display: flex;
@@ -28,10 +31,6 @@
         .logo-placeholder img {
             width: 150px;
             height: auto;
-        }
-
-        nav {
-            transform: translateX(-40px); 
         }
 
         nav ul {
@@ -49,204 +48,345 @@
             text-decoration: none;
             color: #000;
             font-weight: bold;
-            font-size: 1rem; 
+            font-size: 1rem;
             white-space: nowrap;
         }
 
-        nav ul li a:hover {
-            color: #b11b1b;
+        nav ul li a:hover,
+        nav ul li a.active {
+            text-decoration: underline;
         }
 
-        .hero-section {
-            position: relative;
-            text-align: left;
-            color: white;
-            background: url("16bb0a3ab8ea98cfe8906135767f7bf4 (1).webp") no-repeat center center;
-            background-size: cover;
-            height: 600px;
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-        }
-
-        .hero-overlay {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 5px;
-            width: fit-content;
-        }
-
-        .hero-overlay h1 {
-            margin: 0;
-            font-size: 2rem;
-            font-family: 'Lora', serif;
-            text-align: right; /* Align the text to the right */
-        }
-
-        .hero-overlay .book-button {
-            margin-top: 20px; /* Added more space between text and button */
+        /* Sticky Secondary Navigation */
+        .menu-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             background-color: #b11b1b;
-            color: #fff;
+            color: white;
             padding: 10px 20px;
+        }
+
+        .menu-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-nav ul li a {
             text-decoration: none;
+            color: white;
             font-weight: bold;
-            border-radius: 5px;
-            text-align: center;
-            display: block; /* Ensures button is centered in the box */
+            font-size: 1rem;
         }
 
-        .hero-overlay .book-button:hover {
-            background-color: #a00a0a;
+        .menu-nav ul li a:hover,
+        .menu-nav ul li a.active {
+            text-decoration: underline;
         }
 
-        .section {
-            text-align: center;
+        /* Menu Sections */
+        .menu-section {
             padding: 40px 20px;
         }
 
-        .section h2 {
+        .menu-section h2 {
             margin-bottom: 20px;
             font-size: 2rem;
             font-family: 'Lora', serif;
-        }
-
-        .section p {
-            margin: 0 auto 20px auto;
-            max-width: 800px;
-            font-family: 'Nunito', sans-serif;
-        }
-
-        .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .gallery img {
-            width: 200px;
-            height: auto;
-            margin-top: 40px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu-button {
-            background-color: #b11b1b;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
+            border-bottom: 2px solid #b11b1b;
             display: inline-block;
-            margin-top: 100px;
-            margin-bottom: 120px; 
+            padding-bottom: 5px;
         }
 
-        .menu-button:hover {
-            background-color: #a00a0a;
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px; /* Wider spacing between columns */
+            margin-top: 20px;
+        }
+
+        .menu-item {
+            margin-bottom: 20px;
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            font-size: 1rem; /* Smaller font for unbolded titles */
+            text-transform: uppercase; /* All caps */
+            font-weight: normal; /* Unbolded */
+        }
+
+        .menu-item p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .menu-item strong {
+            float: right;
         }
 
         footer {
-            background-color: #f8f8f8;
-            padding: 20px 0 40px; /* Added extra padding to create space below */
             text-align: center;
+            background-color: #f8f8f8;
+            padding: 20px 0;
             font-size: 0.9em;
             border-top: 1px solid #ddd;
-        }
-
-        footer p {
-            margin: 10px 0; /* Added more space between footer paragraphs */
-            font-family: 'Nunito', sans-serif;
         }
 
         footer ul {
             list-style: none;
             padding: 0;
-            margin: 10px 0 0 0;
+            margin: 0;
             display: flex;
             justify-content: center;
             gap: 15px;
+        }
+
+        footer ul li {
+            margin: 0;
         }
 
         footer ul li a {
             text-decoration: none;
             color: #b11b1b;
             font-weight: bold;
-            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
         }
 
         footer ul li a:hover {
-            color: #a00a0a;
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
+    <!-- Primary Header -->
+    <header>
+        <a href="#" class="logo-placeholder">
+            <img src="Golf's High Res Logo clear bkgd.avif" alt="Golf's Steak House Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Banquet Halls & Facilities</a></li>
+                <li><a href="#">Gift Certificates</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="https://www.opentable.ca/golfs-steak-house-and-seafood">Reservations</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <a href="https://k3nzie8818.github.io/golfs-steakhouse-home/" class="logo-placeholder">
-        <img src="Golf's High Res Logo clear bkgd.avif" alt="Logo" id="logo-image" style="width: 150px; height: auto;"> 
-    </a>
-    <nav>
-        <ul>
-            <li><a href="#">Menu</a> <!-- Add link here -->
-            </li>
-            <li><a href="#">Banquet Halls &amp; Facilities</a> <!-- Add link here -->
-            </li>
-            <li><a href="#">Gift Certificates</a> <!-- Add link here -->
-            </li>
-            <li><a href="#">Contact Us</a> <!-- Add link here -->
-            </li>
-            <li><a href="https://www.opentable.ca/golfs-steak-house-and-seafood">Reservations</a> 
-            </li>
-        </ul>
-    </nav>
-</header>
-
-<div class="hero-section">
-    <div class="hero-overlay">
-        <h1>Serving the KW for over 45 years</h1>
-        <a href="https://www.opentable.ca/golfs-steak-house-and-seafood" class="book-button">Book a Table</a> 
-    </div>
-</div>
-
-<section class="section">
-    <h2>A dining destination where tradition meets excellence</h2>
-    <p>
-        Nestled along the picturesque Grand River, we've proudly served the community since 1975 with a commitment to quality, comfort, and exceptional hospitality. Our menu features carefully selected steaks, fresh seafood, and timeless classics crafted to perfection.
-    </p>
-    <p>
-        Whether you're joining us for a romantic dinner, a family celebration, or a corporate event, we offer a warm, inviting atmosphere and stunning views that elevate every experience. At Golf's Steak House, we're more than a restaurant—we're a cherished part of your most memorable moments.
-    </p>
-
-    <div class="gallery">
-        <img src="109363147_588541282100795_4155822852104742841_n.jpg" alt="Dining view 1">
-        <img src="116578424_207677690686088_5325255179640238390_n.jpg" alt="Dining view 2">
-        <img src="75349251_2250723538560510_565849742281034596_n.jpg" alt="Dining view 3">
-        <img src="solarium-seating.jpg" alt="Dining view 4">
+    <!-- Sticky Secondary Navigation -->
+    <div class="menu-nav">
+        <nav>
+            <ul>
+                <li><a href="#starters" class="nav-link">Starters</a></li>
+                <li><a href="#steak" class="nav-link">Steak</a></li>
+                <li><a href="#seafood" class="nav-link">Seafood</a></li>
+                <li><a href="#chicken" class="nav-link">Chicken</a></li>
+                <li><a href="#vegetarian" class="nav-link">Vegetarian</a></li>
+                <li><a href="#light" class="nav-link">Light & Children's Menu</a></li>
+            </ul>
+        </nav>
     </div>
 
-    <a href="#" class="menu-button">See Our Dinner Menu</a> <!-- Add link here -->
+    <!-- Menu Sections -->
+    <section id="starters" class="menu-section">
+        <h2>Starters</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3>Calamari Rings <strong>$14</strong></h3>
+                <p>Lightly breaded and seasoned. Fried golden brown and served with our tartar sauce.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Shrimp Cocktail <strong>$15</strong></h3>
+                <p>Jumbo black tiger shrimp served with our seafood sauce & lemon.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Baked Garlic Shrimp <strong>$16</strong></h3>
+                <p>Jumbo black tiger shrimp slowly baked with our garlic butter.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Escargots <strong>$13</strong></h3>
+                <p>Tender escargot morsels sautéed in garlic butter and covered with our three cheese bread.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Bacon Wrapped Scallops <strong>$16</strong></h3>
+                <p>Jumbo deep sea scallops wrapped in bacon and served with our tartar sauce.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Bruschetta Bread <strong>$12</strong></h3>
+                <p>Marinated tomatoes, roasted garlic, onions and basil. Topped with a three cheese blend.</p>
+            </div>
+        </div>
+    </section>
+
+ <!-- Steak Section -->
+<section id="steak" class="menu-section">
+    <h2>Steak</h2>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <h3>Roast Prime Rib of Beef 10oz <strong>$38</strong></h3>
+            <p>Our signature entree. Well aged Canadian Prime Rib of Beef slowly roasted in limited quantities and served au Jus & horseradish.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Roast Prime Rib of Beef 14oz <strong>$46</strong></h3>
+            <p>Our signature entree. Well aged Canadian Prime Rib of Beef slowly roasted in limited quantities and served au Jus & horseradish.</p>
+        </div>
+        <div class="menu-item">
+            <h3>New York Striploin 8oz <strong>$38</strong></h3>
+            <p>The perfect balance between tenderness and taste.</p>
+        </div>
+        <div class="menu-item">
+            <h3>New York Striploin 12oz <strong>$45</strong></h3>
+            <p>The perfect balance between tenderness and taste.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Filet Mignon 8oz <strong>$48</strong></h3>
+            <p>Finest filet of beef, the most tender of all steaks.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Rib Steak 16oz <strong>$45</strong></h3>
+            <p>Bone in to enhance the flavor.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Rack of Lamb 14oz <strong>$46</strong></h3>
+            <p>New Zealand lamb served on a four peppercorn madeira sauce.</p>
+        </div>
+        <div class="menu-item">
+            <h3>T Bone Porterhouse 22oz <strong>$54</strong></h3>
+            <p>The largest steak on our menu recommended for the hearty eater.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Narrow Back Ribs 1 pound <strong>$35</strong></h3>
+            <p>Char broiled to perfection with our special barbecue sauce.</p>
+        </div>
+    </div>
 </section>
 
-<footer>
-    <p>598 Lancaster Street West, Kitchener, Ontario, Canada</p>
-    <p>(519) 579-4050</p>
-    <p>Open at 4 PM Daily (Office Open at 10 AM)</p>
-    <ul>
-        <li><a href="https://k3nzie8818.github.io/golfs-steakhouse-home/">Home</a> 
-        </li>
-        <li><a href="#">Menu</a> <!-- Add link here -->
-        </li>
-        <li><a href="#">Banquet Halls/Facilities</a> <!-- Add link here -->
-        </li>
-        <li><a href="#">Gift Cards</a> <!-- Add link here -->
-        </li>
-        <li><a href="#">Contact Us</a> <!-- Add link here -->
-        </li>
-        <li><a href="#">Reservations</a> <!-- Add link here -->
-        </li>
-    </ul>
-</footer>
+<!-- Seafood Section -->
+<section id="seafood" class="menu-section">
+    <h2>Seafood</h2>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <h3>Fresh Atlantic Salmon <strong>$32</strong></h3>
+            <p>Brought in fresh daily and prepared to order.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Orange Roughy <strong>$33</strong></h3>
+            <p>New Zealand white fish prepared baked, steamed, or pan seared. Served with our tartar sauce.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Shrimps & Scallops <strong>$38</strong></h3>
+            <p>Jumbo tiger shrimp & deep sea scallops baked in with garlic butter and served with tartar & seafood sauces. (breaded available upon request).</p>
+        </div>
+        <div class="menu-item">
+            <h3>Seafood Platter <strong>$60</strong></h3>
+            <p>8oz lobster tail with our garlic shrimps & scallops. Served with drawn butter and our tartar and seafood sauces. (breaded shrimps/scallops available upon request).</p>
+        </div>
+        <div class="menu-item">
+            <h3>Surf & Turf <strong>$60</strong></h3>
+            <p>8oz jumbo rock lobster tail along side a char broiled filet mignon. Served with drawn butter.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Jumbo Rock Lobster Tails <strong>$68</strong></h3>
+            <p>Two 8oz lobster tails delicately baked and served with drawn butter.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Alaskan King Crab Legs <strong>$98</strong></h3>
+            <p>One pound of Alaskan crab legs cracked open end and served with drawn butter. (market price).</p>
+        </div>
+        <div class="menu-item">
+            <h3>Pan Seared Halibut <strong>$38</strong></h3>
+            <p>The king of fish. Served with a side of Tartar sauce & lemon.</p>
+        </div>
+    </div>
+</section>
 
+<!-- Chicken Section -->
+<section id="chicken" class="menu-section">
+    <h2>Chicken</h2>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <h3>Chicken Cordon Bleu <strong>$34</strong></h3>
+            <p>Breaded breast of chicken stuffed with ham & swiss cheese. Served with a white wine mushroom sauce.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Char Broiled Chicken Breast <strong>$30</strong></h3>
+            <p>8oz marinated breast of chicken char broiled over an open flame.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Chicken & Ribs <strong>$35</strong></h3>
+            <p>Char broiled chicken breast along side a half pound of narrow back ribs.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Chicken Parmesan <strong>$32</strong></h3>
+            <p>A lightly breaded breast of chicken covered with a mild marinara sauce and topped with a blend of mozzarella and Parmigiano-Reggiano cheeses.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Vegetarian Section -->
+<section id="vegetarian" class="menu-section">
+    <h2>Vegetarian</h2>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <h3>Penne Marinara <strong>$24</strong></h3>
+            <p>An array of lightly sautéed vegetables served with penne noodles and a rich marinara sauce (vegan).</p>
+        </div>
+        <div class="menu-item">
+            <h3>Vegetable Lasagna <strong>$24</strong></h3>
+            <p>Lasagna noodles layering a blend of vegetables and marinara sauce. Topped with a three cheese blend and baked to perfection.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Light & Children's Menu Section -->
+<section id="light" class="menu-section">
+    <h2>Light & Children's Menu</h2>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <h3>Narrow Back Ribs <strong>$22</strong></h3>
+            <p>Half pound of our ribs char broiled to perfection with our barbecue sauce.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Schnitzel <strong>$24</strong></h3>
+            <p>Lightly breaded pork schnitzel with a side of vegetable marinara sauce.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Golf's Cheeseburger <strong>$16</strong></h3>
+            <p>Served with lettuce, tomatoes, and fries.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Strips of Chicken <strong>$18</strong></h3>
+            <p>Breaded and served with plum sauce.</p>
+        </div>
+        <div class="menu-item">
+            <h3>Petit Filet <strong>$37</strong></h3>
+            <p>Bacon wrapped and charbroiled to your preference.</p>
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+        <p>598 Lancaster Street West, Kitchener, Ontario, Canada</p>
+        <p>(519) 579-4050</p>
+        <p>Open at 4 PM Daily (Office Open at 10 AM)</p>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Banquet Halls/Facilities</a></li>
+            <li><a href="#">Gift Cards</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Reservations</a></li>
+        </ul>
+    </footer>
 </body>
 </html>
