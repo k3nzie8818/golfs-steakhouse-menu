@@ -64,7 +64,8 @@
             z-index: 1000;
             background-color: #b11b1b;
             color: white;
-            padding: 10px 20px;
+            padding: 30px 20px;
+          margin-top: 0px;
         }
 
         .menu-nav ul {
@@ -99,12 +100,14 @@
             border-bottom: 2px solid #b11b1b;
             display: inline-block;
             padding-bottom: 5px;
+            text-align: center;
+            width: 100%; /* Center-align titles */
         }
 
         .menu-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px; /* Wider spacing between columns */
+            gap: 50px;
             margin-top: 20px;
         }
 
@@ -114,9 +117,9 @@
 
         .menu-item h3 {
             margin: 0;
-            font-size: 1rem; /* Smaller font for unbolded titles */
-            text-transform: uppercase; /* All caps */
-            font-weight: normal; /* Unbolded */
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: normal;
         }
 
         .menu-item p {
@@ -168,12 +171,12 @@
 <body>
     <!-- Primary Header -->
     <header>
-        <a href="#" class="logo-placeholder">
+        <a href="https://k3nzie8818.github.io/golfs-steakhouse-home/" class="logo-placeholder">
             <img src="Golf's High Res Logo clear bkgd.avif" alt="Golf's Steak House Logo">
         </a>
         <nav>
             <ul>
-                <li><a href="#">Menu</a></li>
+                <li><a href="https://k3nzie8818.github.io/golfs-steakhouse-menu/">Menu</a></li>
                 <li><a href="#">Banquet Halls & Facilities</a></li>
                 <li><a href="#">Gift Certificates</a></li>
                 <li><a href="#">Contact Us</a></li>
@@ -196,7 +199,7 @@
         </nav>
     </div>
 
-    <!-- Menu Sections -->
+       <!-- Menu Sections -->
     <section id="starters" class="menu-section">
         <h2>Starters</h2>
         <div class="menu-grid">
@@ -373,8 +376,6 @@
         </div>
     </div>
 </section>
-
-
     <footer>
         <p>598 Lancaster Street West, Kitchener, Ontario, Canada</p>
         <p>(519) 579-4050</p>
@@ -388,5 +389,32 @@
             <li><a href="#">Reservations</a></li>
         </ul>
     </footer>
+
+    <!-- JavaScript for Active Section Tracking -->
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.menu-nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+      
+      <!--Code copied from: https://stackoverflow.com/questions/48603805/how-to-change-active-nav-link-on-scroll-in-javascript Author: Ashwin Name: "How to change active nav link on scroll in JavaScript" Description: This JavaScript snippet dynamically adds and removes the 'active' class from navigation links based on the user's scroll position. Date retrieved: December 6, 2024 -->
+      
+    </script>
 </body>
 </html>
